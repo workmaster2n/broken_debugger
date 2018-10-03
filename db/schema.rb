@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_26_105536) do
+ActiveRecord::Schema.define(version: 2018_09_27_111001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(version: 2018_08_26_105536) do
     t.text "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "properties", force: :cascade do |t|
+    t.string "key"
+    t.string "string_value"
+    t.decimal "number_value"
+    t.bigint "meter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "gas_type"
+    t.index ["meter_id"], name: "index_properties_on_meter_id"
   end
 
 end
